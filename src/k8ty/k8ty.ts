@@ -6,6 +6,7 @@ export namespace K8ty {
   export const coreClient = kc.makeApiClient(k8s.CoreV1Api)
   export const appClient = kc.makeApiClient(k8s.AppsV1Api)
   export const networkClient = kc.makeApiClient(k8s.NetworkingV1beta1Api)
+  export const patchOptions = {headers: {'Content-type': k8s.PatchUtils.PATCH_FORMAT_JSON_PATCH}}
 
   export const createNamespace =  (name: string) => coreClient.createNamespace({
     metadata: {
