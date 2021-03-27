@@ -10,7 +10,7 @@ export default class DeleteApp extends Command {
   async run() {
     const {args} = this.parse(DeleteApp)
     if (args.name) {
-      const canDelete = await K8ty.readApp(args.name)
+      const canDelete = await K8ty.coreClient.readNamespace(args.name)
       .then(res => res.body.metadata?.labels?.['k8ty.app'] === 'true')
       .catch(error => {
         this.error(`k8ty.app ${args.name} doesn't seem to exist!`)
@@ -19,7 +19,7 @@ export default class DeleteApp extends Command {
       })
 
       if (canDelete) {
-        await K8ty.deleteApp(args.name)
+        await K8ty.coreClient.deleteNamespace(args.name)
         .then(_ => this.log(`k8ty.app ${args.name} deleted!`))
         .catch(error => {
           this.error(`Unable to delete ${args.name}`)

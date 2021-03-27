@@ -1,6 +1,6 @@
 import * as k8s from '@kubernetes/client-node'
 import * as http from 'http'
-import {V1Namespace, V1NamespaceList, V1Status} from '@kubernetes/client-node'
+import {V1Namespace} from '@kubernetes/client-node'
 
 export namespace K8ty {
   const kc = new k8s.KubeConfig()
@@ -172,19 +172,6 @@ export namespace K8ty {
   // const createK8tyrc = coreClient.createNamespacedConfigMap('', {})
   // const persistK8tyrc = Promise.resolve(false)
 
-  export interface ListAppResponse {
-    response: http.IncomingMessage;
-    body: V1NamespaceList;
-  }
-
-  export const listApps: () => Promise<ListAppResponse> = () => coreClient.listNamespace(
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    'k8ty.app=true',
-  )
-
   export interface CreateAppResponse {
     response: http.IncomingMessage;
     body: V1Namespace;
@@ -208,19 +195,5 @@ export namespace K8ty {
       return createIngress(name)
     })
   }
-
-  export interface ReadAppResponse {
-    response: http.IncomingMessage;
-    body: V1Namespace;
-  }
-
-  export const readApp: (name: string) => Promise<ReadAppResponse> = (name: string) => coreClient.readNamespace(name)
-
-  export interface DeleteAppResponse {
-    response: http.IncomingMessage;
-    body: V1Status;
-  }
-
-  export const deleteApp: (name: string) => Promise<DeleteAppResponse> = (name: string) => coreClient.deleteNamespace(name)
 
 }
