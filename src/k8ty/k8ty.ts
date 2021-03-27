@@ -1,6 +1,4 @@
 import * as k8s from '@kubernetes/client-node'
-import * as http from 'http'
-import {V1Namespace} from '@kubernetes/client-node'
 
 export namespace K8ty {
   const kc = new k8s.KubeConfig()
@@ -9,7 +7,7 @@ export namespace K8ty {
   export const appClient = kc.makeApiClient(k8s.AppsV1Api)
   export const networkClient = kc.makeApiClient(k8s.NetworkingV1beta1Api)
 
-  const createNamespace =  (name: string) => coreClient.createNamespace({
+  export const createNamespace =  (name: string) => coreClient.createNamespace({
     metadata: {
       name: name,
       labels: {
@@ -19,7 +17,7 @@ export namespace K8ty {
     },
   })
 
-  const createSecret = (name: string) => coreClient.createNamespacedSecret(name, {
+  export const createSecret = (name: string) => coreClient.createNamespacedSecret(name, {
     metadata: {
       name: name,
       labels: {
@@ -29,7 +27,7 @@ export namespace K8ty {
     },
   })
 
-  const createDeployment = (name: string) => appClient.createNamespacedDeployment(name, {
+  export const createDeployment = (name: string, port?: number) => appClient.createNamespacedDeployment(name, {
     metadata: {
       name: name,
       labels: {
@@ -69,7 +67,7 @@ export namespace K8ty {
               ports: [
                 {
                   name: 'http',
-                  containerPort: 80,
+                  containerPort: port ?? 80,
                   protocol: 'TCP',
                 },
               ],
@@ -106,7 +104,7 @@ export namespace K8ty {
     },
   })
 
-  const createService = (name: string) => coreClient.createNamespacedService(name, {
+  export const createService = (name: string) => coreClient.createNamespacedService(name, {
     metadata: {
       name: name,
       labels: {
@@ -131,7 +129,7 @@ export namespace K8ty {
     },
   })
 
-  const createIngress = (name: string) => networkClient.createNamespacedIngress(name, {
+  export const createIngress = (name: string) => networkClient.createNamespacedIngress(name, {
     metadata: {
       name: name,
       labels: {
@@ -171,29 +169,5 @@ export namespace K8ty {
 
   // const createK8tyrc = coreClient.createNamespacedConfigMap('', {})
   // const persistK8tyrc = Promise.resolve(false)
-
-  export interface CreateAppResponse {
-    response: http.IncomingMessage;
-    body: V1Namespace;
-  }
-
-  export const createApp = async (name: string) => {
-    // Create a Namespace
-    createNamespace(name)
-    .then(_ => {
-      // Create a secret
-      return createSecret(name)
-    })
-    .then(_ => {
-      // Create a deployment
-      return createDeployment(name)
-    })
-    .then(_ => {
-      return createService(name)
-    })
-    .then(_ => {
-      return createIngress(name)
-    })
-  }
 
 }

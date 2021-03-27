@@ -1,7 +1,6 @@
 import {Command} from '@oclif/command'
 import {K8ty} from '../../k8ty/k8ty'
 import * as util from 'util'
-import CreateAppResponse = K8ty.CreateAppResponse
 const Haikunator = require('haikunator')
 
 export default class AppCreate extends Command {
@@ -14,19 +13,22 @@ export default class AppCreate extends Command {
       },
     })
     const name = haikunator.haikunate()
-    if (name) {
-      K8ty.createApp(name)
-      .then(_ => {
-        this.log('Created k8ty.app')
-      })
-      .catch((error: CreateAppResponse) => {
-        if (error.response.statusCode === 409) {
-          this.error('That k8ty.app seems to already exist! Please check with app:list')
-        } else {
-          this.error(`Unable to create k8ty.app ${name}! Maybe this will help?`)
-          this.log(util.inspect(error))
-        }
-      })
-    }
+    K8ty.createNamespace(name)
+    .then(_ => {
+      return K8ty.createSecret(name)
+    })
+    .then(_ => {
+      return K8ty.createDeployment(name, 80)
+    })
+    .then(_ => {
+      return K8ty.createService(name)
+    })
+    .then(_ => {
+      return K8ty.createIngress(name)
+    })
+    .catch(error => {
+      this.log(`Unable to create k8ty.app ${name}! Maybe this will help?`)
+      this.log(util.inspect(error))
+    })
   }
 }
