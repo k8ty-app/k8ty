@@ -16,8 +16,8 @@ export default class AppCreate extends Command {
     const name = haikunator.haikunate()
     if (name) {
       K8ty.createApp(name)
-      .then((response: CreateAppResponse) => {
-        this.log(`Created k8ty.app ${response.body.metadata?.name}`)
+      .then(_ => {
+        this.log('Created k8ty.app')
       })
       .catch((error: CreateAppResponse) => {
         if (error.response.statusCode === 409) {
