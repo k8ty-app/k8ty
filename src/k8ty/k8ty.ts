@@ -8,6 +8,13 @@ export namespace K8ty {
   export const networkClient = kc.makeApiClient(k8s.NetworkingV1beta1Api)
   export const patchOptions = {headers: {'Content-type': k8s.PatchUtils.PATCH_FORMAT_JSON_PATCH}}
 
+  export const isValidApp: (name: string) => Promise<boolean> = (name: string) => coreClient.readNamespace(name).then(response => {
+    return response.body.metadata?.labels?.['k8ty.app'] === 'true'
+  })
+  .catch(_ => {
+    return false
+  })
+
   export const createNamespace =  (name: string) => coreClient.createNamespace({
     metadata: {
       name: name,

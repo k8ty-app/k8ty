@@ -12,6 +12,10 @@ export default class SetConfig extends Command {
 
   async run() {
     const {args, flags} = this.parse(SetConfig)
+    if (!(await K8ty.isValidApp(flags.app))) {
+      this.log(`${flags.app} isn't a valid k8ty.app!`)
+      return
+    }
     const patch = [
       {
         op: 'replace',
@@ -27,7 +31,8 @@ export default class SetConfig extends Command {
       undefined,
       undefined,
       undefined,
-      K8ty.patchOptions)
+      K8ty.patchOptions
+    )
     .then(_ => {
       this.log(`${args.ENV} set for ${flags.app}`)
     })

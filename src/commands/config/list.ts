@@ -10,6 +10,10 @@ export default class ListConfig extends Command {
 
   async run() {
     const {flags} = this.parse(ListConfig)
+    if (!(await K8ty.isValidApp(flags.app))) {
+      this.log(`${flags.app} isn't a valid k8ty.app!`)
+      return
+    }
     K8ty.coreClient.readNamespacedSecret(flags.app, flags.app)
     .then(response => {
       const keys = Object.keys(response?.body?.data || {})

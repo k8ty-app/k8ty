@@ -12,6 +12,10 @@ export default class DeleteConfig extends Command {
 
   async run() {
     const {args, flags} = this.parse(DeleteConfig)
+    if (!(await K8ty.isValidApp(flags.app))) {
+      this.log(`${flags.app} isn't a valid k8ty.app!`)
+      return
+    }
     const patch = [
       {
         op: 'remove',
@@ -26,7 +30,8 @@ export default class DeleteConfig extends Command {
       undefined,
       undefined,
       undefined,
-      K8ty.patchOptions)
+      K8ty.patchOptions
+    )
     .then(_ => {
       this.log(`Removed ${args.ENV} in ${flags.app}`)
     })

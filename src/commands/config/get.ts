@@ -12,6 +12,10 @@ export default class GetConfig extends Command {
 
   async run() {
     const {args, flags} = this.parse(GetConfig)
+    if (!(await K8ty.isValidApp(flags.app))) {
+      this.log(`${flags.app} isn't a valid k8ty.app!`)
+      return
+    }
     K8ty.coreClient.readNamespacedSecret(flags.app, flags.app)
     .then(response => {
       const env = response.body?.data?.[`${args.ENV}`]
@@ -21,6 +25,9 @@ export default class GetConfig extends Command {
       } else {
         this.log(`${args.ENV} is not set for ${flags.app}!`)
       }
+    })
+    .catch(_ => {
+      this.log(`There was an error getting k8ty.app config ${args.ENV} for ${flags.app}!`)
     })
   }
 }
