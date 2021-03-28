@@ -18,7 +18,7 @@ export default class AppCreate extends Command {
       return K8ty.createSecret(name)
     })
     .then(_ => {
-      return K8ty.createDeployment(name, 80)
+      return K8ty.createDeployment(name)
     })
     .then(_ => {
       return K8ty.createService(name)
