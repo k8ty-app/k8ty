@@ -35,7 +35,7 @@ export namespace K8ty {
     },
   })
 
-  export const createDeployment = (name: string) => appClient.createNamespacedDeployment(name, {
+  export const createDeployment = (name: string, img: string, port: number) => appClient.createNamespacedDeployment(name, {
     metadata: {
       name: name,
       labels: {
@@ -61,7 +61,7 @@ export namespace K8ty {
           containers: [
             {
               name: name,
-              image: 'nginx',
+              image: img,
               imagePullPolicy: 'Always',
               stdin: true,
               tty: true,
@@ -75,7 +75,7 @@ export namespace K8ty {
               ports: [
                 {
                   name: 'http',
-                  containerPort: 9000,
+                  containerPort: port,
                   protocol: 'TCP',
                 },
               ],
