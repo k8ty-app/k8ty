@@ -6,7 +6,7 @@ Deploy apps to k8s quickly
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/@k8ty-app/k8ty.svg)](https://npmjs.org/package/@k8ty-app/k8ty)
 [![Downloads/week](https://img.shields.io/npm/dw/@k8ty-app/k8ty.svg)](https://npmjs.org/package/@k8ty-app/k8ty)
-[![License](https://img.shields.io/npm/l/@k8ty-app/k8ty.svg)](https://github.com/k8ty-app/k8ty/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/@k8ty-app/k8ty.svg)](https://github.com/k8ty-app/k8ty/blob/main/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
