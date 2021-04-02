@@ -1,5 +1,5 @@
 {
-  "name": "k8ty",
+  "name": "@k8ty-app/k8ty",
   "description": "Deploy apps to k8s quickly",
   "version": "0.0.0",
   "author": "Mark Rudolph @alterationx10",
@@ -42,7 +42,8 @@
   ],
   "homepage": "https://github.com/k8ty-app/k8ty",
   "keywords": [
-    "oclif"
+    "oclif",
+    "kubernetes"
   ],
   "license": "MIT",
   "main": "lib/index.js",

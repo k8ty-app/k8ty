@@ -4,9 +4,9 @@ k8ty
 Deploy apps to k8s quickly
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/k8ty.svg)](https://npmjs.org/package/k8ty)
-[![Downloads/week](https://img.shields.io/npm/dw/k8ty.svg)](https://npmjs.org/package/k8ty)
-[![License](https://img.shields.io/npm/l/k8ty.svg)](https://github.com/k8ty-app/k8ty/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/k8ty-app/k8ty.svg)](https://npmjs.org/package/k8ty-app/k8ty)
+[![Downloads/week](https://img.shields.io/npm/dw/k8ty-app/k8ty.svg)](https://npmjs.org/package/k8ty-app/k8ty)
+[![License](https://img.shields.io/npm/l/k8ty-app/k8ty.svg)](https://github.com/k8ty-app/k8ty/blob/master/package.json)
 
 <!-- toc -->
 
@@ -77,30 +77,3 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 <!-- commandsstop -->
-
----
-MVP: What does this do?
-
-It deploys -ephemeral- docker images to a public
-facing, https endpoint.
-
-We need / pre-reqs:
-
-* cert-manager
-* LB / nginx ingress controller | cloud dependent
-* A domain + wc redirect
-* A docker registry
-* A build system
-
-
-k8s <==> k8ty mappings
-
-| k8ty | k8s | ??? |
-|------|------|-----|
-| app    | namespace ||
-| config | secret    ||
-
-## app
-list => list namespaces
-delete => delete ns, tear it all down!
-create => create a namespace
