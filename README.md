@@ -15,6 +15,8 @@ Command usage is directly below, but for a broader overview, please see:
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)
+* [Overview](#overview)
+* [Prerequisites](#prerequisites)
 <!-- tocstop -->
 
 # Usage
@@ -25,7 +27,7 @@ $ npm install -g @k8ty-app/k8ty
 $ k8ty COMMAND
 running command...
 $ k8ty (-v|--version|version)
-@k8ty-app/k8ty/0.0.0 darwin-arm64 node-v15.12.0
+@k8ty-app/k8ty/0.0.1 darwin-arm64 node-v15.12.0
 $ k8ty --help [COMMAND]
 USAGE
   $ k8ty COMMAND
@@ -61,7 +63,7 @@ OPTIONS
   -p, --port=port    The container port you app runs on
 ```
 
-_See code: [src/commands/app/create.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/app/create.ts)_
+_See code: [src/commands/app/create.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/app/create.ts)_
 
 ## `k8ty app:delete [NAME]`
 
@@ -72,7 +74,7 @@ USAGE
   $ k8ty app:delete [NAME]
 ```
 
-_See code: [src/commands/app/delete.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/app/delete.ts)_
+_See code: [src/commands/app/delete.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/app/delete.ts)_
 
 ## `k8ty app:list`
 
@@ -83,7 +85,7 @@ USAGE
   $ k8ty app:list
 ```
 
-_See code: [src/commands/app/list.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/app/list.ts)_
+_See code: [src/commands/app/list.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/app/list.ts)_
 
 ## `k8ty app:status [APP]`
 
@@ -92,7 +94,7 @@ USAGE
   $ k8ty app:status [APP]
 ```
 
-_See code: [src/commands/app/status.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/app/status.ts)_
+_See code: [src/commands/app/status.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/app/status.ts)_
 
 ## `k8ty app:update [APP]`
 
@@ -107,7 +109,7 @@ OPTIONS
   -p, --port=port    The container port you app runs on
 ```
 
-_See code: [src/commands/app/update.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/app/update.ts)_
+_See code: [src/commands/app/update.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/app/update.ts)_
 
 ## `k8ty config:delete [ENV]`
 
@@ -121,7 +123,7 @@ OPTIONS
   -a, --app=app  (required) The name of the app
 ```
 
-_See code: [src/commands/config/delete.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/config/delete.ts)_
+_See code: [src/commands/config/delete.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/config/delete.ts)_
 
 ## `k8ty config:get [ENV]`
 
@@ -135,7 +137,7 @@ OPTIONS
   -a, --app=app  (required) The name of the app
 ```
 
-_See code: [src/commands/config/get.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/config/get.ts)_
+_See code: [src/commands/config/get.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/config/get.ts)_
 
 ## `k8ty config:list`
 
@@ -149,7 +151,7 @@ OPTIONS
   -a, --app=app  (required) The name of the app
 ```
 
-_See code: [src/commands/config/list.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/config/list.ts)_
+_See code: [src/commands/config/list.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/config/list.ts)_
 
 ## `k8ty config:set [ENV] [VAL]`
 
@@ -163,7 +165,7 @@ OPTIONS
   -a, --app=app  (required) The name of the app
 ```
 
-_See code: [src/commands/config/set.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/config/set.ts)_
+_See code: [src/commands/config/set.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/config/set.ts)_
 
 ## `k8ty hello [FILE]`
 
@@ -183,7 +185,7 @@ EXAMPLE
   hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/hello.ts](https://github.com/k8ty-app/k8ty/blob/v0.0.1/src/commands/hello.ts)_
 
 ## `k8ty help [COMMAND]`
 

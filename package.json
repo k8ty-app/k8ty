@@ -1,10 +1,10 @@
 {
   "name": "@k8ty-app/k8ty",
   "description": "Deploy apps to k8s quickly",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Mark Rudolph @alterationx10",
   "bin": {
-    "k8ty": "./bin/run"
+    "k8ty": "bin/run"
   },
   "bugs": "https://github.com/k8ty-app/k8ty/issues",
   "dependencies": {
